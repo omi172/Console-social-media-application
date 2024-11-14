@@ -1,6 +1,7 @@
 package com.example.thinkify.Controller;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.thinkify.Modals.Post;
 import com.example.thinkify.Services.FeedService;
+import com.example.thinkify.Services.PostService;
 import com.example.thinkify.Services.UserService;
 
 @RestController
@@ -42,5 +44,12 @@ public class UserController {
      @GetMapping("/{userId}/feed")
     public Collection<Post> getUserFeed(@PathVariable String userId) {
         return feedService.getFeed(userId);
+    }
+
+    @Autowired
+    private PostService postService;
+    @GetMapping("/{userId}/feedInfo")
+    public List<String> getUserFeedInfo(@PathVariable String userId) {
+        return postService.getUserFeedWithRelativeTime(userId);
     }
 }

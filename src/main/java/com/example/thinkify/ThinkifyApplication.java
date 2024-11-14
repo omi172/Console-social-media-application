@@ -10,5 +10,5 @@ public class ThinkifyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ThinkifyApplication.class, args);
 	}
-
+	
 }
